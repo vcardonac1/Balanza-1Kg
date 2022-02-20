@@ -40,15 +40,15 @@ void setup() {
 }
 
 void loop() {
-  float peso = balanza.get_units(10); // Entrega el peso actualment medido en gramos
+  float peso = balanza.get_units(10); // Entrega el peso actualmente medido en gramos
   if(peso<0) peso = peso*-1;
   if(peso<1000){
     if(peso<298){
-      balanza.set_scale(Escala0_300); //Ajusta la escala a su valor por defecto que es 1  
+      balanza.set_scale(Escala0_300);
     }else if(peso<698){
-      balanza.set_scale(Escala300_700); //Ajusta la escala a su valor por defecto que es 1
+      balanza.set_scale(Escala300_700);
     }else{
-      balanza.set_scale(Escala700_1000); //Ajusta la escala a su valor por defecto que es 1
+      balanza.set_scale(Escala700_1000);
     }
     Serial.print("Peso: ");
     Serial.print(peso, 1);
@@ -68,7 +68,7 @@ void Calibracion(void)
   delay(200);
   Serial.println("Procesando escalas");
   Serial.println(" ");
-  balanza.set_scale(); //Ajusta la escala a su valor por defecto que es 1  
+  balanza.set_scale(Escala0_300);  
   balanza.tare(50);  //El peso actual es considerado "Tara". Se toman 20 mediciones del peso actual
   delay(500);
   Serial.print("...Destarando...");  
